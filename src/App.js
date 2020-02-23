@@ -11,9 +11,9 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <button className="navigation" onClick={() => alert("hello")}>
+      <Button className="navigation" onClick={() => alert("hello")}>
         {this.props.direction}
-      </button>
+      </Button>
     )
   }
 }
