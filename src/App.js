@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import GameGenerator from './components/gamegenerator'
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ function App() {
       <Navigation 
         direction="Next"
       />
-      <p>Game: generated. Nailed it</p>
+      <GameGenerator />
     </div>
   );
 }
