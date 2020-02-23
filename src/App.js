@@ -2,10 +2,38 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+
+class Navigation extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <button className="navigation" onClick={() => alert("hello")}>
+        {this.props.direction}
+      </button>
+    )
+  }
+}
+
 function App() {
   return (
     <div className="App">
-      <p>Game: generated</p>
+      <Navigation 
+        direction="Prev"
+      />
+      <Navigation 
+        direction="Top"
+      />
+      <Navigation 
+        direction="End"
+      />
+      <Navigation 
+        direction="Next"
+      />
+      <p>Game: generated. Nailed it</p>
     </div>
   );
 }
