@@ -1,0 +1,84 @@
+{
+    "Conversations": [
+        {
+            "id": 0,
+            "Dialogues": [
+                {
+                    "id": 0,
+                    "Type": "Dialogue",
+                    "Text": "What do you think of my ween?",
+                    "Speaker": "CaptJack",
+                    "Characters": ["CaptJack"],
+                    "Expressions": ["Blushing"],
+                    "Background": "CaptainsQuarters",
+                    "Next": 1
+                },
+                {
+                    "id": 1,
+                    "Type": "Dialogue",
+                    "Text": "(Did he really call it his <w>ween</w>?)",
+                    "Speaker": "Player",
+                    "Characters": ["CaptJack"],
+                    "Expressions": ["Frowning"],
+                    "Background": "CaptainsQuarters",
+                    "Next": 2
+                },
+                {
+                    "id": 2,
+                    "Type": "Choice",
+                    "Choices": [
+                        {
+                            "Text": "Laugh",
+                            "Drama": 4,
+                            "Romance": 2,
+                            "Next": 3
+                        },
+                        {
+                            "Text": "Be spicy",
+                            "Drama": 2,
+                            "Romance": 4,
+                            "Next": 4
+                        },
+                        {
+                            "Text": "Compliment",
+                            "Drama": 4,
+                            "Romance": 4,
+                            "Next": 5
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "Type": "Dialogue",
+                    "Text": "What did you call it?! Haha!",
+                    "Speaker": "Player",
+                    "Characters": ["CaptJack"],
+                    "Expressions": ["Heartbroken"],
+                    "Background": "CaptainsQuarters",
+                    "Next": 6
+                },
+                {
+                    "id": 4,
+                    "Type": "Dialogue",
+                    "Text": "I think I need a closer look.",
+                    "Speaker": "Player",
+                    "Characters": ["CaptJack"],
+                    "Expressions": ["Blushing"],
+                    "Background": "CaptainsQuarters",
+                    "Next": 6
+                },
+                {
+                    "id": 5,
+                    "Type": "Dialogue",
+                    "Text": "Um, it's <i>impressive</i>!",
+                    "Speaker": "Player",
+                    "Characters": ["CaptJack"],
+                    "Expressions": ["Smiling"],
+                    "Background": "CaptainsQuarters",
+                    "Next": 6
+                }
+            ]
+        }
+    ]
+
+}
