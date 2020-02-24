@@ -3,20 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import GameGenerator from './components/gamegenerator'
+import Navigation from './components/pagenavigation'
 
-class Navigation extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Button className="navigation" onClick={() => alert("hello")}>
-        {this.props.direction}
-      </Button>
-    )
-  }
-}
 
 function App() {
   return (
