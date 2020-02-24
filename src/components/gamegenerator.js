@@ -10,7 +10,7 @@ class GameGenerator extends Component {
     state = {
         data: [],
         id: 0,
-        message: null,
+        json: null,
         intervalIsSet: false,
         idToDelete: null,
         idToUpdate: null,
@@ -57,7 +57,7 @@ class GameGenerator extends Component {
 
   // our put method that uses our backend api
   // to create new query into our data base
-  putDataToDB = (message) => {
+  putDataToDB = (json) => {
     let currentIds = this.state.data.map((data) => data.id);
     let idToBeAdded = 0;
     while (currentIds.includes(idToBeAdded)) {
@@ -66,7 +66,7 @@ class GameGenerator extends Component {
 
     axios.post('http://localhost:3001/api/putData', {
       id: idToBeAdded,
-      message: message,
+      json: json,
     });
   };
 
@@ -101,12 +101,13 @@ class GameGenerator extends Component {
 
     axios.post('http://localhost:3001/api/updateData', {
       id: objIdToUpdate,
-      update: { message: updateToApply },
+      update: { json: updateToApply },
     });
   };
 
     render() {
         const { data } = this.state;
+        console.log(data);
         return(
             <div>This is the game part
                 <Tree tree={this.state.treedata}></Tree>
@@ -119,24 +120,31 @@ class GameGenerator extends Component {
                 <hr></hr>
                 <div>
                     <ul>
-                    {data.length <= 0
+                    {
+                    data.length <= 0
                         ? 'NO DB ENTRIES YET'
                         : data.map((dat) => (
-                            <li style={{ padding: '10px' }} key={data.message}>
+                            <li style={{ padding: '10px' }} key={dat.id}>
                             <span style={{ color: 'gray' }}> id: </span> {dat.id} <br />
                             <span style={{ color: 'gray' }}> data: </span>
-                            {dat.message}
+                            {dat.json}
                             </li>
                         ))}
                     </ul>
+
+
+
+
+
+
                     <div style={{ padding: '10px' }}>
                     <input
                         type="text"
-                        onChange={(e) => this.setState({ message: e.target.value })}
+                        onChange={(e) => this.setState({ json: e.target.value })}
                         placeholder="add something in the database"
                         style={{ width: '200px' }}
                     />
-                    <button onClick={() => this.putDataToDB(this.state.message)}>
+                    <button onClick={() => this.putDataToDB(this.state.json)}>
                         ADD
                     </button>
                     </div>
@@ -171,7 +179,7 @@ class GameGenerator extends Component {
                     >
                         UPDATE
                     </button>
-                    </div>
+                    </div> 
                 </div>
             </div>
             
