@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import dummyData from '../data/sample_romancejson.json'
+import dummyData from '../data/mvp_sample.json'
 import Tree from './tree'
 import PageInput from './pageinput'
 import PreviewWindow from './previewWindow'
 import axios from 'axios';
+import {Container, Row, Col} from 'react-bootstrap'
 
 class GameGenerator extends Component {
     // initialize our state
@@ -15,6 +16,7 @@ class GameGenerator extends Component {
         idToDelete: null,
         idToUpdate: null,
         objectToUpdate: null,
+        treedata: dummyData
     };
 
     constructor(){
@@ -109,12 +111,22 @@ class GameGenerator extends Component {
         const { data } = this.state;
         return(
             <div>This is the game part
-                <Tree tree={this.state.treedata}></Tree>
-                <PreviewWindow></PreviewWindow>
-                <PageInput></PageInput>
-
-
-
+                {
+                  this.state && this.state.treedata &&
+                  <Container>
+                    <Row>
+                      <Col>
+                        <Tree tree={this.state.treedata}></Tree>
+                      </Col>
+                      <Col>
+                        <PreviewWindow></PreviewWindow>
+                      </Col>
+                      <Col>
+                        <PageInput></PageInput>
+                      </Col>
+                    </Row>
+                  </Container>
+                }
 
                 <hr></hr>
                 <div>
