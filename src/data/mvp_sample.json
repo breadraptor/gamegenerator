@@ -1,0 +1,128 @@
+
+{
+    "gameId": 0,
+    "Routes": [
+        {
+            "Route": "Sasuke",
+            "routeId": 0,
+            "Chapters": [
+                {
+                    "chapterId": 0,
+                    "Stories": [
+                        {
+                            "storyId": 0,
+                            "Pages": [
+                                {
+                                    "pageId": 0,
+                                    "Text": "What do you think of my ween?",
+                                    "Speaker": "Captain Jack",
+                                    "Characters": ["CaptJack_Smirk"],
+                                    "Background": "CaptainsQuarters"
+                                },
+                                {
+                                    "pageId": 1,
+                                    "Text": "(Did he really call it his <i>ween</i>?)",
+                                    "Speaker": "Player",
+                                    "Characters": ["CaptJack_Smirk"],
+                                    "Background": "CaptainsQuarters"
+                                },
+                                {
+                                    "pageId": 2,
+                                    "Text": "What did you call it?! Haha!",
+                                    "Speaker": "Player",
+                                    "Characters": ["CaptJack_Blush"],
+                                    "Background": "CaptainsQuarters"
+                                }
+                            ]
+                        },
+                        {
+                            "storyId": 1,
+                            "Pages": [
+                                {
+                                    "pageId": 0,
+                                    "Text": "Wow story two!",
+                                    "Speaker": "Captain Jack",
+                                    "Characters": ["CaptJack_Smirk"],
+                                    "Background": "CaptainsQuarters"
+                                },
+                                {
+                                    "pageId": 1,
+                                    "Text": "(Didn't see that coming.)",
+                                    "Speaker": "Player",
+                                    "Characters": ["CaptJack_Smirk"],
+                                    "Background": "CaptainsQuarters"
+                                },
+                                {
+                                    "pageId": 2,
+                                    "Text": "What should we say?",
+                                    "Speaker": "Player",
+                                    "Characters": ["CaptJack_Think"],
+                                    "Background": "CaptainsQuarters"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "chapterId": 1,
+                    "Stories": [
+                        {
+                            "storyId": 0,
+                            "Pages": [
+                                {
+                                    "pageId": 0,
+                                    "Text": "Chapters too!?",
+                                    "Speaker": "Captain Jack",
+                                    "Characters": ["CaptJack_Shock"],
+                                    "Background": "CaptainsQuarters"
+                                },
+                                {
+                                    "pageId": 1,
+                                    "Text": "(God help us all.)",
+                                    "Speaker": "Player",
+                                    "Characters": ["CaptJack_Smirk"],
+                                    "Background": "CaptainsQuarters"
+                                },
+                                {
+                                    "pageId": 2,
+                                    "Text": "I'm out of things to say.",
+                                    "Speaker": "Captain Jack",
+                                    "Characters": ["CaptJack_Think"],
+                                    "Background": "CaptainsQuarters"
+                                }
+                            ]
+                        },
+                        {
+                            "storyId": 1,
+                            "Pages": [
+                                {
+                                    "pageId": 0,
+                                    "Text": "Wow story two of chapter 2!",
+                                    "Speaker": "Captain Jack",
+                                    "Characters": ["CaptJack_Smirk"],
+                                    "Background": "CaptainsQuarters"
+                                },
+                                {
+                                    "pageId": 1,
+                                    "Text": "(Didn't see that coming.)",
+                                    "Speaker": "Player",
+                                    "Characters": ["CaptJack_Smirk"],
+                                    "Background": "CaptainsQuarters"
+                                },
+                                {
+                                    "pageId": 2,
+                                    "Text": "JSON JSON JSON!",
+                                    "Speaker": "Captain Jack",
+                                    "Characters": ["CaptJack_Joy"],
+                                    "Background": "CaptainsQuarters"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        
+        
+        }
+    ]
+}
