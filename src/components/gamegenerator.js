@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import dummyData from '../data/sample_romancejson.json'
+import dummyData from '../data/mvp_sample.json'
 import Tree from './tree'
 import PageInput from './pageinput'
 import PreviewWindow from './previewWindow'
 import axios from 'axios';
+import {Container, Row, Col} from 'react-bootstrap'
 
 class GameGenerator extends Component {
     // initialize our state
@@ -15,15 +16,12 @@ class GameGenerator extends Component {
         idToDelete: null,
         idToUpdate: null,
         objectToUpdate: null,
-        offline: true //for dev without database
+        offline: true, //for dev without database
+        treedata: dummyData
     };
 
     constructor(){
         super();
-        if (this.state.offline) {
-          let firstRoute = dummyData.Routes[0];
-          //todo parse data...
-        }
     }
 
     render() {
@@ -135,7 +133,32 @@ class GameGenerator extends Component {
     });
   };
 
-}
+    render() {
+        const { data } = this.state;
+        console.log(data);
+        return(
+            <div>This is the game part
+                {
+                  this.state && this.state.treedata &&
+                  <Container>
+                    <Row>
+                      <Col>
+                        <Tree tree={this.state.treedata}></Tree>
+                      </Col>
+                      <Col>
+                        <PreviewWindow></PreviewWindow>
+                      </Col>
+                      <Col>
+                        <PageInput></PageInput>
+                      </Col>
+                    </Row>
+                  </Container>
+                }
+                </div>
+        )
+    }
+  }
+
 
 function DatabaseTesting(props) {
   const data = props.data;
