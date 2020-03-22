@@ -15,22 +15,52 @@ class GameGenerator extends Component {
         idToDelete: null,
         idToUpdate: null,
         objectToUpdate: null,
+        offline: true //for dev without database
     };
 
     constructor(){
         super();
-        //this.state = {treedata: {}}
+        if (this.state.offline) {
+          let firstRoute = dummyData.Routes[0];
+          //todo parse data...
+        }
     }
+
+    render() {
+      let dbDisplay;
+      if (this.state.offline) {
+        dbDisplay = 'Using offline data';
+      }
+      else {
+        dbDisplay = DatabaseTesting(this.state);
+      }
+
+        return(
+            <div>This is the game part
+                <Tree tree={this.state.treedata}></Tree>
+                <PreviewWindow></PreviewWindow>
+                <PageInput></PageInput>
+                
+                <hr></hr>
+                {dbDisplay}
+            </div>
+        ) 
+    }
+
+  /* ------------------- DATABASE HELPERS ------------------- */
 
   // when component mounts, first thing it does is fetch all existing data in our db
   // then we incorporate a polling logic so that we can easily see if our db has
   // changed and implement those changes into our UI
   componentDidMount() {
-    this.getDataFromDb();
-    if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getDataFromDb, 1000);
-      this.setState({ intervalIsSet: interval });
+    if (!this.state.offline) {
+      this.getDataFromDb();
+      if (!this.state.intervalIsSet) {
+        let interval = setInterval(this.getDataFromDb, 1000);
+        this.setState({ intervalIsSet: interval });
+      }
     }
+
   }
 
   // never let a process live forever
@@ -105,87 +135,70 @@ class GameGenerator extends Component {
     });
   };
 
-    render() {
-        const { data } = this.state;
-        console.log(data);
-        return(
-            <div>This is the game part
-                <Tree tree={this.state.treedata}></Tree>
-                <PreviewWindow></PreviewWindow>
-                <PageInput></PageInput>
+}
 
+function DatabaseTesting(props) {
+  const data = props.data;
+  return (                  
+  <div>
+  <ul>
+  {
+  data.length <= 0
+      ? 'NO DB ENTRIES YET'
+      : data.map((dat) => (
+          <li style={{ padding: '10px' }} key={dat.id}>
+          <span style={{ color: 'gray' }}> id: </span> {dat.id} <br />
+          <span style={{ color: 'gray' }}> data: </span>
+          {dat.json}
+          </li>
+      ))}
+  </ul>
 
-
-
-                <hr></hr>
-                <div>
-                    <ul>
-                    {
-                    data.length <= 0
-                        ? 'NO DB ENTRIES YET'
-                        : data.map((dat) => (
-                            <li style={{ padding: '10px' }} key={dat.id}>
-                            <span style={{ color: 'gray' }}> id: </span> {dat.id} <br />
-                            <span style={{ color: 'gray' }}> data: </span>
-                            {dat.json}
-                            </li>
-                        ))}
-                    </ul>
-
-
-
-
-
-
-                    <div style={{ padding: '10px' }}>
-                    <input
-                        type="text"
-                        onChange={(e) => this.setState({ json: e.target.value })}
-                        placeholder="add something in the database"
-                        style={{ width: '200px' }}
-                    />
-                    <button onClick={() => this.putDataToDB(this.state.json)}>
-                        ADD
-                    </button>
-                    </div>
-                    <div style={{ padding: '10px' }}>
-                    <input
-                        type="text"
-                        style={{ width: '200px' }}
-                        onChange={(e) => this.setState({ idToDelete: e.target.value })}
-                        placeholder="put id of item to delete here"
-                    />
-                    <button onClick={() => this.deleteFromDB(this.state.idToDelete)}>
-                        DELETE
-                    </button>
-                    </div>
-                    <div style={{ padding: '10px' }}>
-                    <input
-                        type="text"
-                        style={{ width: '200px' }}
-                        onChange={(e) => this.setState({ idToUpdate: e.target.value })}
-                        placeholder="id of item to update here"
-                    />
-                    <input
-                        type="text"
-                        style={{ width: '200px' }}
-                        onChange={(e) => this.setState({ updateToApply: e.target.value })}
-                        placeholder="put new value of the item here"
-                    />
-                    <button
-                        onClick={() =>
-                        this.updateDB(this.state.idToUpdate, this.state.updateToApply)
-                        }
-                    >
-                        UPDATE
-                    </button>
-                    </div> 
-                </div>
-            </div>
-            
-        )
-            
-    }
+    <div style={{ padding: '10px' }}>
+    <input
+        type="text"
+        onChange={(e) => this.setState({ json: e.target.value })}
+        placeholder="add something in the database"
+        style={{ width: '200px' }}
+    />
+    <button onClick={() => this.putDataToDB(this.state.json)}>
+        ADD
+    </button>
+    </div>
+    <div style={{ padding: '10px' }}>
+    <input
+        type="text"
+        style={{ width: '200px' }}
+        onChange={(e) => this.setState({ idToDelete: e.target.value })}
+        placeholder="put id of item to delete here"
+    />
+    <button onClick={() => this.deleteFromDB(this.state.idToDelete)}>
+        DELETE
+    </button>
+    </div>
+    <div style={{ padding: '10px' }}>
+    <input
+        type="text"
+        style={{ width: '200px' }}
+        onChange={(e) => this.setState({ idToUpdate: e.target.value })}
+        placeholder="id of item to update here"
+    />
+    <input
+        type="text"
+        style={{ width: '200px' }}
+        onChange={(e) => this.setState({ updateToApply: e.target.value })}
+        placeholder="put new value of the item here"
+    />
+    <button
+        onClick={() =>
+        this.updateDB(this.state.idToUpdate, this.state.updateToApply)
+        }
+    >
+        UPDATE
+    </button>
+    </div>
+    </div> 
+    )
 }
 
 export default GameGenerator
