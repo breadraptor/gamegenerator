@@ -17,7 +17,11 @@ class GameGenerator extends Component {
         idToUpdate: null,
         objectToUpdate: null,
         offline: true, //for dev without database
-        treedata: dummyData
+        treedata: dummyData,
+        currentRoute: 0,
+        currentChapter: 0,
+        currentStory: 0,
+        currentPage: 0
     };
 
     constructor(){
@@ -32,17 +36,33 @@ class GameGenerator extends Component {
       else {
         dbDisplay = DatabaseTesting(this.state);
       }
-
-        return(
-            <div>This is the game part
-                <Tree tree={this.state.treedata}></Tree>
-                <PreviewWindow></PreviewWindow>
-                <PageInput></PageInput>
-                
-                <hr></hr>
+      
+      return(
+          <div>This is the game part
+              {
+                this.state && this.state.treedata &&
+                <Container>
+                  <Row>
+                    <Col>
+                      <Tree tree={this.state.treedata}></Tree>
+                    </Col>
+                    <Col>
+                      <PreviewWindow></PreviewWindow>
+                    </Col>
+                    <Col>
+                      <PageInput></PageInput>
+                    </Col>
+                  </Row>
+                </Container>
+              }
+              <hr></hr>
                 {dbDisplay}
-            </div>
-        ) 
+              </div>
+      )
+  }
+
+    handleClickEvents(event) {
+      console.log("CLICKED");
     }
 
   /* ------------------- DATABASE HELPERS ------------------- */
@@ -132,32 +152,7 @@ class GameGenerator extends Component {
       update: { json: updateToApply },
     });
   };
-
-    render() {
-        const { data } = this.state;
-        console.log(data);
-        return(
-            <div>This is the game part
-                {
-                  this.state && this.state.treedata &&
-                  <Container>
-                    <Row>
-                      <Col>
-                        <Tree tree={this.state.treedata}></Tree>
-                      </Col>
-                      <Col>
-                        <PreviewWindow></PreviewWindow>
-                      </Col>
-                      <Col>
-                        <PageInput></PageInput>
-                      </Col>
-                    </Row>
-                  </Container>
-                }
-                </div>
-        )
-    }
-  }
+}
 
 
 function DatabaseTesting(props) {
